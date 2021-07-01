@@ -39,3 +39,7 @@ app.post('/kitten/:id', (req, res) => {
     message: `Kitten ${id} created with name: ${name}`
   });
 })
+
+// this is all we need to serve up static files within the public directory
+// with the server runnnig, go to http://localhost:8080/index.html to see what we get!
+app.use(express.static('public'))
