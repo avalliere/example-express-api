@@ -15,6 +15,7 @@ app.listen(
 // 1st argument is the route
 // 2nd argument is the callback function - we pass in request and response objects here
 app.get('/kitten', (req, res) => {
+// this example will always respond with Magpie, but normally we would be getting from a database
   res.status(200).send({
     'id': 1,
     'kitten': '🐈‍⬛',
@@ -28,10 +29,12 @@ app.post('/kitten/:id', (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
 
+// we can respond with an error message if a required param is missing
   if (!name) {
     res.status(400).send({ message: 'Kitten needs a name!'})
   }
 
+// we have no database for this example, so we're just sending a success message
   res.status(201).send({
     message: `Kitten ${id} created with name: ${name}`
   });
